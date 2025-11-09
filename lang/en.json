@@ -1,0 +1,12 @@
+{
+  "title": "MyJonCraft SGS Config Transfer",
+  "sourcePlaceholder": "Source folder",
+  "targetPlaceholder": "Destination folder",
+  "select": "Browse",
+  "copy": "Copy Configurations",
+  "copying": "Copying...",
+  "success": "✅ Configurations copied successfully.",
+  "error": "❌ Error:",
+  "selectWarning": "⚠️ Please select both folders.",
+  "footer": "By StormGamesStudios"
+}

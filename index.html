@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MyJonCraft SGS Config Transfer</title>
+  <link rel="icon" type="image/x-icon" href="icons/icon.png">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #3a3a3a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    input {
+      width: 70%;
+      margin: 5px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      text-align: center;
+      background-color: #2b2b2b;
+      color: white;
+    }
+    #status {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+      opacity: 0.8;
+    }
+    footer span {
+      color: #4da6ff;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="title"></h2>
+
+  <div>
+    <input id="sourcePath" placeholder="">
+    <button id="browseSource"></button>
+  </div>
+
+  <div>
+    <input id="targetPath" placeholder="">
+    <button id="browseTarget"></button>
+  </div>
+
+  <button id="copyBtn"></button>
+
+  <p id="status"></p>
+
+  <footer>
+    <span id="footerText"></span>
+  </footer>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

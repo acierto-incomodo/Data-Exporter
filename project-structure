@@ -1,0 +1,9 @@
+minecraft-config-transfer/
+│
+├─ main.js
+├─ preload.js
+├─ index.html
+├─ renderer.js
+└─ lang/
+   ├─ es.json
+   └─ en.json

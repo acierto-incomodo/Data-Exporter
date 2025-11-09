@@ -1,0 +1,62 @@
+{
+  "name": "data-exporter",
+  "version": "1.0.0",
+  "description": "Programa para transferir configuraciones de MyJonCraft SGS entre instalaciones.",
+  "author": "StormGamesStudios",
+  "license": "ISC",
+  "type": "commonjs",
+  "main": "main.js",
+  "homepage": "https://github.com/acierto-incomodo/Data-Exporter",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.stormgamesstudios.myjoncraftconfigtransfer",
+    "productName": "MyJonCraft SGS Config Transfer",
+    "copyright": "StormGamesStudios © 2025",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "lang/**/*",
+      "icons/**/*"
+    ],
+    "extraResources": [],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MyJonCraft SGS Config Transfer"
+    },
+    "linux": {
+      "target": ["deb"],
+      "category": "Utility",
+      "icon": "icons",
+      "maintainer": "StormGamesStudios",
+      "synopsis": "Herramienta para transferir configuraciones de MyJonCraft SGS",
+      "description": "Programa para transferir configuraciones de MyJonCraft SGS entre instalaciones."
+    }
+  },
+  "devDependencies": {
+    "electron": "^39.1.1",
+    "electron-builder": "^26.0.12"
+  }
+}

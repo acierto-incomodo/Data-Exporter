@@ -1,0 +1,12 @@
+{
+  "title": "Transferidor de Configs de MyJonCraft SGS",
+  "sourcePlaceholder": "Carpeta origen",
+  "targetPlaceholder": "Carpeta destino",
+  "select": "Seleccionar",
+  "copy": "Copiar configuraciones",
+  "copying": "Copiando...",
+  "success": "✅ Configuraciones copiadas con éxito.",
+  "error": "❌ Error:",
+  "selectWarning": "⚠️ Selecciona ambas carpetas.",
+  "footer": "By StormGamesStudios"
+}
