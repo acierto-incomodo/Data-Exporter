@@ -1,3 +1,35 @@
+async function checkVersion() {
+  const fs = require('fs');
+  const { shell } = require('electron');
+
+  // 1. Leer versión local
+  const localVersionPath = 'version.txt';
+  let localVersion = '0.0.0';
+  if (fs.existsSync(localVersionPath)) {
+    localVersion = fs.readFileSync(localVersionPath, 'utf8').trim();
+  }
+
+  // 2. Obtener versión online
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/acierto-incomodo/Data-Exporter/main/version-github.txt');
+    const remoteVersion = (await response.text()).trim();
+
+    // 3. Comparar versiones
+    if (localVersion !== remoteVersion) {
+      // Abrir página de la release más reciente
+      const confirmUpdate = confirm(`Hay una nueva versión disponible: ${remoteVersion}\nTu versión: ${localVersion}\n¿Quieres ir a la página de descargas?`);
+      if (confirmUpdate) {
+        shell.openExternal('https://github.com/acierto-incomodo/Data-Exporter/releases/latest');
+      }
+    }
+  } catch (err) {
+    console.error('No se pudo verificar la versión online:', err);
+  }
+}
+
+// Ejecutar al iniciar
+checkVersion();
+
 let langData = {};
 
 async function loadLanguage() {

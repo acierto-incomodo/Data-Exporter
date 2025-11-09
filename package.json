@@ -1,6 +1,6 @@
 {
   "name": "data-exporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Programa para transferir configuraciones de MyJonCraft SGS entre instalaciones.",
   "author": "StormGamesStudios",
   "license": "ISC",
@@ -26,7 +26,8 @@
       "index.html",
       "renderer.js",
       "lang/**/*",
-      "icons/**/*"
+      "icons/**/*",
+      "version.txt"
     ],
     "extraResources": [],
     "win": {
