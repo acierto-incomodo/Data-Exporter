@@ -1,6 +1,6 @@
 {
   "name": "data-exporter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Programa para transferir configuraciones de MyJonCraft SGS entre instalaciones.",
   "author": "StormGamesStudios",
   "license": "ISC",
@@ -9,9 +9,9 @@
   "homepage": "https://github.com/acierto-incomodo/Data-Exporter",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win && electron-builder --linux",
+    "dist": "npm run dist:win && npm run dist:linux",
     "dist:linux": "electron-builder --linux",
-    "dist:win": "electron-builder --win"
+    "dist:win": "electron-builder --win --x64"
   },
   "build": {
     "appId": "com.stormgamesstudios.myjoncraftconfigtransfer",

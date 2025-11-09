@@ -1,39 +1,37 @@
+// ===========================
+// Comprobar versión online
+// ===========================
 async function checkVersion() {
-  const fs = require('fs');
-  const { shell } = require('electron');
-
-  // 1. Leer versión local
-  const localVersionPath = 'version.txt';
-  let localVersion = '0.0.0';
-  if (fs.existsSync(localVersionPath)) {
-    localVersion = fs.readFileSync(localVersionPath, 'utf8').trim();
-  }
-
-  // 2. Obtener versión online
   try {
+    // Obtener versión local desde package.json
+    const appVersion = await window.electronAPI.getAppVersion();
+
+    // Obtener versión online desde GitHub
     const response = await fetch('https://raw.githubusercontent.com/acierto-incomodo/Data-Exporter/main/version-github.txt');
     const remoteVersion = (await response.text()).trim();
 
-    // 3. Comparar versiones
-    if (localVersion !== remoteVersion) {
-      // Abrir página de la release más reciente
-      const confirmUpdate = confirm(`Hay una nueva versión disponible: ${remoteVersion}\nTu versión: ${localVersion}\n¿Quieres ir a la página de descargas?`);
+    // Comparar versiones
+    if (appVersion !== remoteVersion) {
+      const confirmUpdate = confirm(
+        `A new version is available: ${remoteVersion}\nYour version: ${appVersion}\nDo you want to go to the downloads page?`
+      );
       if (confirmUpdate) {
-        shell.openExternal('https://github.com/acierto-incomodo/Data-Exporter/releases/latest');
+        await window.electronAPI.openExternal('https://github.com/acierto-incomodo/Data-Exporter/releases/latest');
       }
     }
   } catch (err) {
-    console.error('No se pudo verificar la versión online:', err);
+    console.error('No se pudo verificar la versión:', err);
   }
 }
 
-// Ejecutar al iniciar
 checkVersion();
 
+// ===========================
+// Multilenguaje
+// ===========================
 let langData = {};
 
 async function loadLanguage() {
-  // Detectar idioma del sistema (si empieza con 'es', usa español)
   const systemLang = navigator.language.startsWith('es') ? 'es' : 'en';
   const langFile = `lang/${systemLang}.json`;
 
@@ -59,6 +57,9 @@ function applyLanguage() {
 
 loadLanguage();
 
+// ===========================
+// Selección de carpetas y copia
+// ===========================
 const sourceInput = document.getElementById('sourcePath');
 const targetInput = document.getElementById('targetPath');
 const statusText = document.getElementById('status');
